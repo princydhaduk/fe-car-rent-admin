@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppSettings, defaults } from '../app.config';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoreService {
+  constructor(private http:HttpClient){ }
   get notify(): Observable<Record<string, any>> {
     return this.notify$.asObservable();
   }
@@ -30,5 +32,10 @@ export class CoreService {
   setLanguage(lang: string) {
     this.options.language = lang;
     this.notify$.next({ lang });
+  }
+
+  postAdmin(payload:any){
+    let url = 'http://localhost:5000/api/adminLogin/';
+    return this.http.post(url,payload);
   }
 }

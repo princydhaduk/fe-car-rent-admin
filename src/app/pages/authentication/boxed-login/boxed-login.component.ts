@@ -28,5 +28,17 @@ export class AppBoxedLoginComponent {
   submit() {
     // console.log(this.form.value);
     this.router.navigate(['/dashboards/dashboard2']);
+
+    const payload ={
+      "username": this.form.value.uname,
+      "password": this.form.value.password,
+    }
+    this.settings.postAdmin(payload).subscribe((res:any) => {
+      if(res){
+        console.log("res....",res);
+      }
+    })
+    console.log("payload .....", payload);
+
   }
 }

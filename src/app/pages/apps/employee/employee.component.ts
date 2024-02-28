@@ -1,123 +1,27 @@
-import { Component, Inject, Optional, ViewChild, AfterViewInit } from '@angular/core';
+import { AppSettings } from './../../../app.config';
+import { Component, Inject, Optional, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { AppAddEmployeeComponent } from './add/add.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CoreService } from 'src/app/services/core.service';
 
-export interface Employee {
-  id: number;
-  Name: string;
-  Position: string;
-  Email: string;
-  Mobile: number;
-  DateOfJoining: Date;
-  Salary: number;
-  Projects: number;
-  imagePath: string;
-}
+// export interface Cars {
+//   id:number,
+//   model:string,
+//   price:string,
+//   description: string,
+//   mileage:string,
+//   ac:string,
+//   seats:string,
+//   luggage:string,
+//   fuel:string,
+//   brand: string,
+//   imagePath: string,
+// }
 
-const employees = [
-  {
-    id: 1,
-    Name: 'Johnathan Deo',
-    Position: 'Seo Expert',
-    Email: 'r@gmail.com',
-    Mobile: 9786838,
-    DateOfJoining: new Date('01-2-2020'),
-    Salary: 12000,
-    Projects: 10,
-    imagePath: 'assets/images/profile/user-2.jpg',
-  },
-  {
-    id: 2,
-    Name: 'Mark Zukerburg',
-    Position: 'Web Developer',
-    Email: 'mark@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('04-2-2020'),
-    Salary: 12000,
-    Projects: 10,
-    imagePath: 'assets/images/profile/user-3.jpg',
-  },
-  {
-    id: 3,
-    Name: 'Sam smith',
-    Position: 'Web Designer',
-    Email: 'sam@gmail.com',
-    Mobile: 7788838,
-    DateOfJoining: new Date('02-2-2020'),
-    Salary: 12000,
-    Projects: 10,
-    imagePath: 'assets/images/profile/user-4.jpg',
-  },
-  {
-    id: 4,
-    Name: 'John Deo',
-    Position: 'Tester',
-    Email: 'john@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('03-2-2020'),
-    Salary: 12000,
-    Projects: 11,
-    imagePath: 'assets/images/profile/user-5.jpg',
-  },
-  {
-    id: 5,
-    Name: 'Genilia',
-    Position: 'Actor',
-    Email: 'genilia@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('05-2-2020'),
-    Salary: 12000,
-    Projects: 19,
-    imagePath: 'assets/images/profile/user-6.jpg',
-  },
-  {
-    id: 6,
-    Name: 'Jack Sparrow',
-    Position: 'Content Writer',
-    Email: 'jac@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('05-21-2020'),
-    Salary: 12000,
-    Projects: 5,
-    imagePath: 'assets/images/profile/user-7.jpg',
-  },
-  {
-    id: 7,
-    Name: 'Tom Cruise',
-    Position: 'Actor',
-    Email: 'tom@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('02-15-2019'),
-    Salary: 12000,
-    Projects: 9,
-    imagePath: 'assets/images/profile/user-3.jpg',
-  },
-  {
-    id: 8,
-    Name: 'Hary Porter',
-    Position: 'Actor',
-    Email: 'hary@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('07-3-2019'),
-    Salary: 12000,
-    Projects: 7,
-    imagePath: 'assets/images/profile/user-6.jpg',
-  },
-  {
-    id: 9,
-    Name: 'Kristen Ronaldo',
-    Position: 'Player',
-    Email: 'kristen@gmail.com',
-    Mobile: 8786838,
-    DateOfJoining: new Date('01-15-2019'),
-    Salary: 12000,
-    Projects: 1,
-    imagePath: 'assets/images/profile/user-5.jpg',
-  },
-];
 
 @Component({
   templateUrl: './employee.component.html',
@@ -125,27 +29,34 @@ const employees = [
 export class AppEmployeeComponent implements AfterViewInit {
   @ViewChild(MatTable, { static: true }) table: MatTable<any> = Object.create(null);
   searchText: any;
-  displayedColumns: string[] = [
+  carForm!:FormGroup;
+  dataSource = [];
+  displayedColumns: any = [
     '#',
-    'name',
-    'email',
-    'mobile',
-    'date of joining',
-    'salary',
-    'projects',
-    'action',
+    'plate_number',
+    'Image',
+    'model',
+    'brand',
+    'price',
+    'description',
+    'mileage',
+    'ac',
+    'seats',
+    'luggage',
+    'fuel',
   ];
-  dataSource = new MatTableDataSource(employees);
+
+  // dataSource = new MatTableDataSource(Cars);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator = Object.create(null);
 
-  constructor(public dialog: MatDialog, public datePipe: DatePipe) { }
+  constructor(public dialog: MatDialog, public datePipe: DatePipe, private formBuilder:FormBuilder) { }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string): void {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openDialog(action: string, obj: any): void {
@@ -157,7 +68,7 @@ export class AppEmployeeComponent implements AfterViewInit {
       if (result.event === 'Add') {
         this.addRowData(result.data);
       } else if (result.event === 'Update') {
-        this.updateRowData(result.data);
+        // this.updateRowData(result.data);
       } else if (result.event === 'Delete') {
         this.deleteRowData(result.data);
       }
@@ -165,47 +76,52 @@ export class AppEmployeeComponent implements AfterViewInit {
   }
 
   // tslint:disable-next-line - Disables all
-  addRowData(row_obj: Employee): void {
-    this.dataSource.data.unshift({
-      id: employees.length + 1,
-      Name: row_obj.Name,
-      Position: row_obj.Position,
-      Email: row_obj.Email,
-      Mobile: row_obj.Mobile,
-
-      DateOfJoining: new Date(),
-      Salary: row_obj.Salary,
-      Projects: row_obj.Projects,
-      imagePath: row_obj.imagePath,
-    });
+  addRowData(row_obj: any): void {
+    // // this.dataSource.data.unshift({
+    // //   id: Cars.length + 1,
+    // //   model: row_obj.model,
+    // //   price: row_obj.price,
+    // //   description: row_obj.description,
+    // //   mileage: row_obj.mileage,
+    // //   ac: row_obj.ac,
+    // //   seats: row_obj.seats,
+    // //   luggage: row_obj.luggage,
+    // //   fuel: row_obj.fuel,
+    // //   brand: row_obj.brand,
+    // //   imagePath: row_obj.imagePath,
+    // });
     this.dialog.open(AppAddEmployeeComponent);
-    this.table.renderRows();
+    // this.table.renderRows();
+
   }
 
   // tslint:disable-next-line - Disables all
-  updateRowData(row_obj: Employee): boolean | any {
-    this.dataSource.data = this.dataSource.data.filter((value: any) => {
-      if (value.id === row_obj.id) {
-        value.Name = row_obj.Name;
-        value.Position = row_obj.Position;
-        value.Email = row_obj.Email;
-        value.Mobile = row_obj.Mobile;
-        value.DateOfJoining = row_obj.DateOfJoining;
-        value.Salary = row_obj.Salary;
-        value.Projects = row_obj.Projects;
-        value.imagePath = row_obj.imagePath;
-      }
-      return true;
-    });
-  }
+  // updateRowData(row_obj: Employee): boolean | any {
+  //   this.dataSource.data = this.dataSource.data.filter((value: any) => {
+  //     if (value.id === row_obj.id) {
+  //       value.Name = row_obj.Name;
+  //       value.Position = row_obj.Position;
+  //       value.Email = row_obj.Email;
+  //       value.Mobile = row_obj.Mobile;
+  //       value.DateOfJoining = row_obj.DateOfJoining;
+  //       value.Salary = row_obj.Salary;
+  //       value.Projects = row_obj.Projects;
+  //       value.imagePath = row_obj.imagePath;
+  //     }
+  //     return true;
+  //   });
+  // }
 
   // tslint:disable-next-line - Disables all
-  deleteRowData(row_obj: Employee): boolean | any {
-    this.dataSource.data = this.dataSource.data.filter((value: any) => {
-      return value.id !== row_obj.id;
-    });
+  deleteRowData(row_obj: any): boolean | any {
+    // this.dataSource.data = this.dataSource.data.filter((value: any) => {
+    //   return value.id !== row_obj.id;
+    // });
   }
 }
+
+
+
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -213,18 +129,32 @@ export class AppEmployeeComponent implements AfterViewInit {
   templateUrl: 'employee-dialog-content.html',
 })
 // tslint:disable-next-line: component-class-suffix
-export class AppEmployeeDialogContentComponent {
+export class AppEmployeeDialogContentComponent implements OnInit{
   action: string;
   // tslint:disable-next-line - Disables all
   local_data: any;
   selectedImage: any = '';
   joiningDate: any = '';
+  userForm!: FormGroup;
+  Image:File;
+  // plate_number: string;
+  // model:string;
+  // brand:string;
+  // price:string;
+  // description:string;
+  // mileage:string;
+  // ac:string;
+  // seats:string;
+  // luggage:string;
+  // fuel:string;
 
   constructor(
+    private formBuilder:FormBuilder,
+    private setting:CoreService,
     public datePipe: DatePipe,
     public dialogRef: MatDialogRef<AppEmployeeDialogContentComponent>,
     // @Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: Employee,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.local_data = { ...data };
     this.action = this.local_data.action;
@@ -234,14 +164,61 @@ export class AppEmployeeDialogContentComponent {
         'yyyy-MM-dd',
       );
     }
-    if (this.local_data.imagePath === undefined) {
-      this.local_data.imagePath = 'assets/images/profile/user-1.jpg';
+    if (this.local_data.Image === undefined) {
+      this.local_data.image = 'assets/images/profile/user-1.jpg';
     }
   }
 
+  ngOnInit(): void {
+    this.getCarDisplay();
+    this.userForm = this.formBuilder.group({
+      Image:['',Validators.required],
+      plate_number: ['',Validators.required],
+      model: ['',Validators.required],
+      brand: ['',Validators.required],
+      price: ['',Validators.required],
+      description: ['',Validators.required],
+      mileage:['',Validators.required],
+      ac:['',Validators.required],
+      seats:['',Validators.required],
+      luggage: ['',Validators.required],
+      fuel: ['',Validators.required],
+    });
+}
+
   doAction(): void {
     this.dialogRef.close({ event: this.action, data: this.local_data });
+debugger
+    const formdata = new FormData()
+    formdata.append('Image',this.local_data.Image, this.local_data.Image.name)
+    formdata.append('plate_number',this.local_data.plate_number)
+    formdata.append('model',this.local_data.model)
+    formdata.append('brand',this.local_data.brand)
+    formdata.append('price',this.local_data.price)
+    formdata.append('description',this.local_data.description)
+    formdata.append('mileage',this.local_data.mileage)
+    formdata.append('ac',this.local_data.ac)
+    formdata.append('seats',this.local_data.seats)
+    formdata.append('luggage',this.local_data.luggage)
+    formdata.append('fuel',this.local_data.fuel)
+
+  //  debugger
+    this.setting.setCar(formdata).subscribe((res:any) => {
+      if(res){
+        console.log("res====", res);
+      }
+    });
+    console.log("formdata",formdata);
   }
+
+  getCarDisplay(){
+     this.setting.getCar().subscribe((res:any) => {
+       if(res){
+        const datasource= res.message.data;
+       }
+     });
+  }
+
   closeDialog(): void {
     this.dialogRef.close({ event: 'Cancel' });
   }
@@ -262,7 +239,7 @@ export class AppEmployeeDialogContentComponent {
     // tslint:disable-next-line - Disables all
     reader.onload = (_event) => {
       // tslint:disable-next-line - Disables all
-      this.local_data.imagePath = reader.result;
+      this.local_data.Image = reader.result;
     };
   }
 }

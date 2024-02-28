@@ -23,10 +23,10 @@ export const DashboardsRoutes: Routes = [
         path: 'dashboard2',
         component: AppDashboard2Component,
         data: {
-          title: 'eCommerce',
+          title: 'Car Rental',
           urls: [
-            { title: 'Dashboard', url: '/dashboards/dashboard1' },
-            { title: 'eCommerce' },
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
+            { title: 'Car Rental' },
           ],
         },
       },

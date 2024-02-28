@@ -5,7 +5,7 @@
         <mat-form-field appearance="outline" class="w-100 hide-hint">
           <input
             matInput
-            placeholder="Search Employee"
+            placeholder="Search Car Details"
             (keyup)="applyFilter($any($event.target).value)"
           />
           <mat-icon matSuffix>
@@ -15,7 +15,7 @@
       </div>
       <div class="col-lg-4 d-flex align-items-center justify-content-end">
         <button mat-flat-button (click)="openDialog('Add', {})" color="primary">
-          Add Employee
+          Add Cars
         </button>
       </div>
     </div>
@@ -30,18 +30,18 @@
           <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Name</th>
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Model</th>
           <td mat-cell *matCellDef="let element">
             <div class="d-flex align-items-center">
               <img
                 class="rounded-circle"
-                [src]="element.imagePath"
+                [src]="element.Image"
                 width="40"
               />
               <div class="m-l-16">
                 <p class="f-w-600 mat-subtitle-1 f-s-16 m-t-0">
-                  {{ element.Name }}
+                  {{ element.model }}
                 </p>
                 <small class="mat-body-1 f-s-14">{{ element.Position }}</small>
               </div>
@@ -49,46 +49,80 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="email">
+        <ng-container matColumnDef="plate_number">
           <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
-            Email
+            Plate_number
           </th>
-          <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.Email }}</td>
+          <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.plate_number}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="mobile">
+        <ng-container matColumnDef="price">
           <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
-            Mobile
+            Price
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Description
           </th>
           <td mat-cell *matCellDef="let element" class="f-s-14">
-            {{ element.Mobile }}
+            {{ element.description }}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="date of joining">
+        <ng-container matColumnDef="mileage">
           <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
-            Date of Joining
+            Mileage
           </th>
           <td mat-cell *matCellDef="let element" class="f-s-14">
-            {{ element.DateOfJoining | date : "fullDate" }}
+            {{ element.mileage }}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="salary">
+        <ng-container matColumnDef="ac">
           <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
-            Salary
+            AC
           </th>
           <td mat-cell *matCellDef="let element" class="f-s-14">
-            {{ element.Salary }}
+            {{ element.ac }}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="projects">
+        <ng-container matColumnDef="luggage">
           <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
-            Projects
+            Luggage
           </th>
           <td mat-cell *matCellDef="let element" class="f-s-14">
-            {{ element.Projects }}
+            {{ element.luggage }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="seats">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Seats
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.seats }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fuel">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Fuel
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.fuel }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="brand">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Brand
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.brand }}
           </td>
         </ng-container>
 

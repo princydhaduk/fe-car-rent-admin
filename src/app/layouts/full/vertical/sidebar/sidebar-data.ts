@@ -10,8 +10,8 @@ export const navItems: NavItem[] = [
   //   route: '/dashboards/dashboard1',
   // },
   {
-    displayName: 'eCommerce',
-    iconName: 'shopping-cart',
+    displayName: 'DeshBoard',
+    iconName: 'menu',
     route: '/dashboards/dashboard2',
   },
   {
@@ -43,8 +43,8 @@ export const navItems: NavItem[] = [
   //   route: 'apps/courses',
   // },
   {
-    displayName: 'Employee',
-    iconName: 'brand-ctemplar',
+    displayName: 'Cars',
+    iconName: 'car',
     route: 'apps/employee',
   },
   {

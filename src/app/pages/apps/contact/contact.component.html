@@ -1,4 +1,4 @@
-<mat-card class="cardWithShadow">
+ <mat-card class="cardWithShadow">
   <mat-card-content>
     <div class="row justify-content-between">
       <div class="col-sm-4">
@@ -24,68 +24,55 @@
   </mat-card-content>
 </mat-card>
 
-<div class="row">
-  <div
-    class="col-sm-6 col-lg-4"
-    *ngFor="let contact of contacts"
-  >
-    <mat-card class="cardWithShadow">
-      <mat-card-content class="text-center p-24">
-        <img
-          src="{{ contact.contactimg }}"
-          class="rounded-circle border p-5"
-          width="100"
-        />
-        <h4 mat-card-title class="card-title m-t-16 m-b-0">
-          {{ contact.contactname }}
-        </h4>
-        <span class="f-s-12">{{ contact.contactpost }}</span>
-        <div class="m-t-20">
-          <button mat-flat-button class="m-r-8" color="primary">Chat</button>
-          <button mat-flat-button color="accent">Follow</button>
-        </div>
-        <div class="m-t-20">
-          <span class="f-s-14">
-            {{ contact.contactadd }}
-            <br />
-            <br />
-            Mo: {{ contact.contactno }}</span
-          >
-        </div>
-      </mat-card-content>
-      <mat-divider></mat-divider>
-      <div class="row">
-        <div class="col-4 p-y-12">
-          <a
-            href="#"
-            class="mat-subtitle-2 text-decoration-none f-s-14 f-w-500 d-flex justify-content-center align-items-center"
-          >
-            <i-tabler name="brand-instagram" class="icon-18 m-r-4"></i-tabler>
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" class="w-100">
+        <!-- <ng-container matColumnDef="#">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">#</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container> -->
 
-            {{ contact.contactinstagram }}
-          </a>
-        </div>
-        <div class="col-4 p-y-12">
-          <a
-            href="#"
-            class="mat-subtitle-2 text-decoration-none f-s-14 f-w-500 d-flex justify-content-center align-items-center"
-          >
-            <i-tabler name="brand-linkedin" class="icon-18 m-r-4"></i-tabler>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Name
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.name }}</td>
+        </ng-container>
 
-            {{ contact.contactlinkedin }}
-          </a>
-        </div>
-        <div class="col-4 p-y-12">
-          <a
-            href="#"
-            class="mat-subtitle-2 text-decoration-none f-s-14 f-w-500 d-flex justify-content-center align-items-center"
-          >
-            <i-tabler name="brand-facebook" class="icon-18 m-r-4"></i-tabler>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Email
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.email }}</td>
+        </ng-container>
 
-            {{ contact.contactfacebook }}
-          </a>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-</div>
+        <ng-container matColumnDef="mobile_number">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Mobile No.
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.mobile_number }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="message">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Messages
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.message}}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+

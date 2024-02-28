@@ -30,7 +30,7 @@ export const AppsRoutes: Routes = [
         data: {
           title: 'Chat',
           urls: [
-            { title: 'Dashboard', url: '/dashboards/dashboard1' },
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
             { title: 'Chat' },
           ],
         },
@@ -99,7 +99,7 @@ export const AppsRoutes: Routes = [
         data: {
           title: 'Todo App',
           urls: [
-            { title: 'Dashboard', url: '/dashboards/dashboard1' },
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
             { title: 'Todo App' },
           ],
         },
@@ -132,7 +132,7 @@ export const AppsRoutes: Routes = [
         data: {
           title: 'Contacts',
           urls: [
-            { title: 'Dashboard', url: '/dashboards/dashboard1' },
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
             { title: 'Contacts' },
           ],
         },
@@ -185,10 +185,10 @@ export const AppsRoutes: Routes = [
         path: 'employee',
         component: AppEmployeeComponent,
         data: {
-          title: 'Employee',
+          title: 'Cars Detils',
           urls: [
-            { title: 'Dashboard', url: '/dashboards/dashboard1' },
-            { title: 'Employee' },
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
+            { title: 'Cars' },
           ],
         },
       },

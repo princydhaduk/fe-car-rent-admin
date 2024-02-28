@@ -8,11 +8,11 @@ const routes: Routes = [
     path: '',
     component: FullComponent,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: '/dashboards/dashboard1',
-      //   pathMatch: 'full',
-      // },
+      {
+        path: '',
+        redirectTo: '/dashboards/dashboard2',
+        pathMatch: 'full',
+      },
       {
         path: 'starter',
         loadChildren: () =>

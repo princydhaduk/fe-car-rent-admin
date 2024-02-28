@@ -1,3 +1,5 @@
+import { Data } from '@angular/router';
+import { messages } from './../chat/chat-data';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import {
   MatDialog,
@@ -6,18 +8,12 @@ import {
 } from '@angular/material/dialog';
 import { Contact } from './contact';
 import { ContactService } from './contact.service';
+import { CoreService } from 'src/app/services/core.service';
 
 export interface ContactData {
   closeResult: string;
   contacts: Contact[];
   searchText: any;
-  txtContactname: string;
-  txtContactPost: string;
-  txtContactadd: string;
-  txtContactno: string;
-  txtContactinstagram: string;
-  txtContactlinkedin: string;
-  txtContactfacebook: string;
 }
 
 @Component({
@@ -26,24 +22,31 @@ export interface ContactData {
 export class AppContactComponent implements OnInit {
   closeResult = '';
   contacts: Contact[] = [];
+  dataSource:any = [];
 
   searchText: any;
-  txtContactname = '';
-  txtContactPost = '';
-  txtContactadd = '';
-  txtContactno = '';
-  txtContactinstagram = '';
-  txtContactlinkedin = '';
-  txtContactfacebook = '';
+  displayedColumns = ['name','email','mobile_number','message']
 
   constructor(
+    private setting:CoreService,
     public dialog: MatDialog,
     private contactService: ContactService
   ) {
     this.contacts = this.contactService.getContacts();
-    //console.log(this.contacts);
+    console.log(this.contacts);
+  }
+  ngOnInit(): void {
+    // this.contacts = [];
+    this.getContactData();
   }
 
+  getContactData(){
+    this.setting.getContact().subscribe((res:any)=>{
+      if(res && res.message){
+        this.dataSource = res.message.data;
+      }
+    });
+  }
   openDialog(action: string, obj: any): void {
     obj.action = action;
     const dialogRef = this.dialog.open(AppContactDialogContentComponent, {
@@ -70,22 +73,19 @@ export class AppContactComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {
-    // this.contacts = [];
-  }
 
   // tslint:disable-next-line - Disables all
   addContact(row_obj: ContactData): void {
-    this.contacts.unshift({
-      contactimg: 'assets/images/profile/user-1.jpg',
-      contactname: row_obj.txtContactname,
-      contactpost: row_obj.txtContactPost,
-      contactadd: row_obj.txtContactadd,
-      contactno: row_obj.txtContactno,
-      contactinstagram: row_obj.txtContactinstagram,
-      contactlinkedin: row_obj.txtContactlinkedin,
-      contactfacebook: row_obj.txtContactfacebook,
-    });
+    // this.contacts.unshift({
+      // contactimg: 'assets/images/profile/user-1.jpg',
+      // contactname: row_obj.txtContactname,
+      // contactpost: row_obj.txtContactPost,
+      // contactadd: row_obj.txtContactadd,
+      // contactno: row_obj.txtContactno,
+      // contactinstagram: row_obj.txtContactinstagram,
+      // contactlinkedin: row_obj.txtContactlinkedin,
+      // contactfacebook: row_obj.txtContactfacebook,
+    // });
   }
 }
 

@@ -7,7 +7,7 @@
     <div class="d-flex align-items-center m-b-16">
       <img
         class="mat-card-avatar"
-        [src]="local_data.imagePath"
+        [src]="local_data.Image"
         class="rounded-circle"
         width="50"
       />
@@ -26,10 +26,10 @@
             type="text"
             matInput
             required
-            id="name"
-            name="name"
-            [(ngModel)]="local_data.Name"
-            placeholder="Name"
+            id="plate_number"
+            name="plate_number"
+            [(ngModel)]="local_data.plate_number"
+            placeholder="Plate_number"
           />
         </mat-form-field>
       </div>
@@ -39,10 +39,10 @@
             type="text"
             matInput
             required
-            id="position"
-            name="position"
-            [(ngModel)]="local_data.Position"
-            placeholder="Position"
+            id="model"
+            name="model"
+            [(ngModel)]="local_data.model"
+            placeholder="Model"
           />
         </mat-form-field>
       </div>
@@ -52,10 +52,10 @@
             type="text"
             matInput
             required
-            id="email"
-            name="email"
-            [(ngModel)]="local_data.Email"
-            placeholder="Email"
+            id="brand"
+            name="brand"
+            [(ngModel)]="local_data.brand"
+            placeholder="Brand"
           />
         </mat-form-field>
       </div>
@@ -65,52 +65,95 @@
             type="text"
             matInput
             required
-            id="mobile"
-            name="mobile"
-            [(ngModel)]="local_data.Mobile"
-            placeholder="Mobile"
+            id="price"
+            name="price"
+            [(ngModel)]="local_data.price"
+            placeholder="Price"
           />
         </mat-form-field>
       </div>
-      <div class="col-lg-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <input
-            type="date"
-            placeholder="Date of Birth"
-            matInput
-            required
-            id="doj"
-            name="doj"
-            [(ngModel)]="joiningDate"
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <mat-form-field appearance="outline" class="w-100">
           <input
             type="text"
             matInput
             required
-            id="salary"
-            name="salary"
-            [(ngModel)]="local_data.Salary"
-            placeholder="Salary"
+            id="description"
+            name="description"
+            [(ngModel)]="local_data.description"
+            placeholder="Description"
           />
         </mat-form-field>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <mat-form-field appearance="outline" class="w-100">
           <input
             type="text"
             matInput
             required
-            id="projects"
-            name="projects"
-            [(ngModel)]="local_data.Projects"
-            placeholder="Projects"
+            id="mileage"
+            name="mileage"
+            [(ngModel)]="local_data.mileage"
+            placeholder="Mileage"
           />
         </mat-form-field>
       </div>
+
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <input
+            type="text"
+            matInput
+            required
+            id="ac"
+            name="ac"
+            [(ngModel)]="local_data.ac"
+            placeholder="Air_Conditioning"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <input
+            type="text"
+            matInput
+            required
+            id="seats"
+            name="seats"
+            [(ngModel)]="local_data.seats"
+            placeholder="Seats"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <input
+            type="text"
+            matInput
+            required
+            id="luggage"
+            name="luggage"
+            [(ngModel)]="local_data.luggage"
+            placeholder="Luggage"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <input
+            type="text"
+            matInput
+            required
+            id="fuel"
+            name="fuel"
+            [(ngModel)]="local_data.fuel"
+            placeholder="Fuel"
+          />
+        </mat-form-field>
+      </div>
+
     </div>
     <button
       mat-flat-button

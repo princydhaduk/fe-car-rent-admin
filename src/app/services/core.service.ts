@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppSettings, defaults } from '../app.config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -37,5 +37,27 @@ export class CoreService {
   postAdmin(payload:any){
     let url = 'http://localhost:5000/api/adminLogin/';
     return this.http.post(url,payload);
+  }
+
+  getContact(): Observable<any>{
+    let url = "http://localhost:5000/api/contactDisplay";
+    return this.http.get(url);
+  }
+
+  setCar(data:any): Observable<any>{
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+    const options = {
+      headers
+    };
+    let url = 'http://localhost:5000/api/caradd';
+    return this.http.post(url,data, options);
+  }
+
+  getCar(): Observable<any>{
+    let url = "http://localhost:5000/api/carsDisplayController";
+    return this.http.get(url);
   }
 }

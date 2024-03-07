@@ -96,6 +96,8 @@ import { AppBlogDetailsComponent } from './blogs/details/details.component';
     }),
     MatNativeDateModule,
     NgScrollbarModule,
+
+
   ],
   exports: [TablerIconsModule],
   declarations: [

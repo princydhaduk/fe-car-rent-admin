@@ -51,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     }),
     NgScrollbarModule,
     FullComponent,
+
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],

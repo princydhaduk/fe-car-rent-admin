@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CoreService {
-  constructor(private http:HttpClient){ }
+  constructor(private http:HttpClient, ){ }
   get notify(): Observable<Record<string, any>> {
     return this.notify$.asObservable();
   }
@@ -44,7 +44,7 @@ export class CoreService {
     return this.http.get(url);
   }
 
-  setCar(data:any): Observable<any>{
+  setCar(payload:any): Observable<any>{
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -53,11 +53,35 @@ export class CoreService {
       headers
     };
     let url = 'http://localhost:5000/api/caradd';
-    return this.http.post(url,data, options);
+    return this.http.post(url,payload, options);
   }
 
+  setCarUpdate(): Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+    const options = {
+      headers
+    };
+    let url = 'http://localhost:5000/api/carupdate';
+    return this.http.post(url,options)
+    }
+
+
+  // setCarDelete(payload:any): Observable<any>{
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  //   });
+  //   const options = {
+  //     headers
+  //   };
+  //   let url = 'http://localhost:5000/api/cardelete';
+  //   return this.http.post(url, payload, options);
+  // }
+
   getCar(): Observable<any>{
-    let url = "http://localhost:5000/api/carsDisplayController";
+    let url = "http://localhost:5000/api/cardisplay";
     return this.http.get(url);
   }
+
 }

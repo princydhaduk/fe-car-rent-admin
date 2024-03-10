@@ -47,12 +47,13 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // debugger
+    this.dataSource = new MatTableDataSource(this.dataSource);
     this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(): void {
     this.getCarDisplay();
-    this.dataSource = new MatTableDataSource();
     this.dataSource.sort = this.sort;
   }
 
@@ -87,29 +88,18 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
   }
 
   updateRowData(element:any): void {
-    debugger
-    this.dataSource.data.foreach((ele: any) => {
-      if (ele.plate_number === element.plate_number) {
-        ele.img = element.img;
-        ele.price = element.price;
-        // ele.model = element.model;
-        // ele.brand = element.brand;
-        // ele.description = element.description;
-        // ele.mileage = element.mileage;
-        // ele.ac = element.ac;
-        // ele.seats = element.seats;
-        // ele.luggage = element.luggage;
-        // ele.fuel = element.fuel
+    const payload = {
+        "plate_number": element.plate_number,
+        "Image":  element?.fileToUpload?.name || element.img,
+        "price": element.price
+    }
+    this.setting.setCarUpdate(payload).subscribe((res:any) => {
+      if(res.message){
+        this.toastr.success(res.message);
       }
-
-      this.setting.setCarUpdate().subscribe((res:any) => {
-        if(res.message){
-          this.toastr.success(res.message);
-        }
-        console.log("update::::",this.dataSource);
-        this.getCarDisplay();
-      })
-    });
+      console.log("update::::",this.dataSource);
+      this.getCarDisplay();
+    })
   }
 
   deleteRecords(element:any): void {
@@ -132,8 +122,8 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
     this.setting.getCar().subscribe((res: any) => {
       if (res) {
         res.data.forEach((ele: any, index: number) => {
-          ele['id'] = index + 1
-          ele['img'] = '../../../../assets/car-images/' + ele.Image;
+          ele['id'] = index + 1;
+          ele['img'] = ele.Image;
         });
         this.dataSource = res.data;
         this.filterData = res.data;
@@ -198,7 +188,7 @@ export class AppEmployeeDialogContentComponent implements OnInit {
   }
 
   doAction(): void {
-    this.dialogRef.close({ event: this.action, data: this.local_data });
+    this.dialogRef.close({ event: this.action, data: {...this.local_data, fileToUpload: this.fileToUpload} });
     // const formdata = new FormData()
     // formdata.append('Image', this.fileToUpload.name)
     // formdata.append('plate_number', this.local_data.plate_number)
@@ -212,29 +202,31 @@ export class AppEmployeeDialogContentComponent implements OnInit {
     // formdata.append('luggage', this.local_data.luggage)
     // formdata.append('fuel', this.local_data.fuel)
 
-    const payload = {
-      "plate_number": this.carForm.value.plate_number,
-      "Image": this.fileToUpload.name,
-      "model": this.carForm.value.model,
-      "brand": this.carForm.value.brand,
-      "price": this.carForm.value.price,
-      "description": this.carForm.value.description,
-      "mileage": this.carForm.value.mileage,
-      "Air_Conditioning_Availability": this.carForm.value.ac,
-      "seats": this.carForm.value.seats,
-      "luggage": this.carForm.value.luggage,
-      "fuel": this.carForm.value.fuel,
-    }
+    if(this.action === "Add") {
+      const payload = {
+        "plate_number": this.carForm.value.plate_number,
+        "Image": this.fileToUpload.name,
+        "model": this.carForm.value.model,
+        "brand": this.carForm.value.brand,
+        "price": this.carForm.value.price,
+        "description": this.carForm.value.description,
+        "mileage": this.carForm.value.mileage,
+        "Air_Conditioning_Availability": this.carForm.value.ac,
+        "seats": this.carForm.value.seats,
+        "luggage": this.carForm.value.luggage,
+        "fuel": this.carForm.value.fuel,
+      }
 
-    this.setting.setCar(payload).subscribe((res: any) => {
-      if (res) {
-        this.toastr.success(res.message);
-      }
-      else{
-        this.toastr.error("Somthing want worng, Try agin...");
-      }
-      // this.getCarDisplay();
-    });
+      this.setting.setCar(payload).subscribe((res: any) => {
+        if (res) {
+          this.toastr.success(res.message);
+        }
+        else{
+          this.toastr.error("Somthing want worng, Try agin...");
+        }
+        // this.getCarDisplay();
+      });
+    }
   }
 
   closeDialog(): void {

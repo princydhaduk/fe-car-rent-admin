@@ -56,7 +56,7 @@ export class CoreService {
     return this.http.post(url,payload, options);
   }
 
-  setCarUpdate(): Observable<any>{
+  setCarUpdate(payload:any): Observable<any>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });
@@ -64,7 +64,7 @@ export class CoreService {
       headers
     };
     let url = 'http://localhost:5000/api/carupdate';
-    return this.http.post(url,options)
+    return this.http.post(url, payload, options)
     }
 
 

@@ -7,7 +7,8 @@ import { CoreService } from 'src/app/services/core.service';
   standalone: true,
   imports: [NgIf],
   template: `
-    <div class="branding">
+      <h2 style="margin: 25px; margin-bottom: 10px;">AdminKit</h2>
+   <!--  <div class="branding">
       <a href="/" *ngIf="options.theme === 'light'">
         <img
           src=""
@@ -22,7 +23,7 @@ import { CoreService } from 'src/app/services/core.service';
           alt="logo"
         />
       </a>
-    </div>
+    </div>-->
   `,
 })
 export class BrandingComponent {

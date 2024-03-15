@@ -40,7 +40,8 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
   ];
   dataSource: any = [];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator = Object.create(null);
 
   constructor(public dialog: MatDialog, public datePipe: DatePipe, private formBuilder: FormBuilder, private setting: CoreService, private http: HttpClient, private toastr:ToastrService,) {
     this.filteredItems = this.dataSource?.slice();
@@ -103,7 +104,7 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
   }
 
   deleteRecords(element:any): void {
-    // debugger
+    debugger
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });
@@ -119,17 +120,18 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
   }
 
   getCarDisplay() {
-    this.setting.getCar().subscribe((res: any) => {
-      if (res) {
-        res.data.forEach((ele: any, index: number) => {
+    this.setting.getCar().subscribe((data: any) => {
+      if (data) {
+        data.forEach((ele: any, index: number) => {
           ele['id'] = index + 1;
           ele['img'] = ele.Image;
         });
-        this.dataSource = res.data;
-        this.filterData = res.data;
-        this.dataSource = res.data;
-        console.log("res-data === ", res.data);
+        this.dataSource = data;
+        this.filterData = data;
+        this.dataSource = data;
+        // console.log("res-data === ", data);
       }
+
     });
   }
 }

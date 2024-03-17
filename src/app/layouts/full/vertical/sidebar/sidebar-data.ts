@@ -37,6 +37,11 @@ export const navItems: NavItem[] = [
     iconName: 'phone',
     route: 'apps/contacts',
   },
+  {
+    displayName: 'User',
+    iconName: 'user',
+    route: 'apps/contacts',
+  },
   // {
   //   displayName: 'Courses',
   //   iconName: 'certificate',
@@ -89,9 +94,9 @@ export const navItems: NavItem[] = [
   //     },
   //   ],
   // },
-  {
-    navCap: 'Pages',
-  },
+  // {
+  //   navCap: 'Pages',
+  // },
   // {
   //   displayName: 'Roll Base Access',
   //   iconName: 'lock-access',
@@ -102,21 +107,21 @@ export const navItems: NavItem[] = [
   //   iconName: 'git-merge',
   //   route: 'theme-pages/treeview',
   // },
-  {
-    displayName: 'Pricing',
-    iconName: 'currency-dollar',
-    route: 'theme-pages/pricing',
-  },
+  // {
+  //   displayName: 'Pricing',
+  //   iconName: 'currency-dollar',
+  //   route: 'theme-pages/pricing',
+  // },
   // {
   //   displayName: 'Account Setting',
   //   iconName: 'user-circle',
   //   route: 'theme-pages/account-setting',
   // },
-  {
-    displayName: 'FAQ',
-    iconName: 'help',
-    route: 'theme-pages/faq',
-  },
+  // {
+  //   displayName: 'FAQ',
+  //   iconName: 'help',
+  //   route: 'theme-pages/faq',
+  // },
   // {
   //   displayName: 'Landingpage',
   //   iconName: 'app-window',

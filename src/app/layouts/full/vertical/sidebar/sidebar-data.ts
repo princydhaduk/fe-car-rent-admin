@@ -47,11 +47,11 @@ export const navItems: NavItem[] = [
     iconName: 'car',
     route: 'apps/employee',
   },
-  {
-    displayName: 'Notes',
-    iconName: 'note',
-    route: 'apps/notes',
-  },
+  // {
+  //   displayName: 'Notes',
+  //   iconName: 'note',
+  //   route: 'apps/notes',
+  // },
   // {
   //   displayName: 'Tickets',
   //   iconName: 'ticket',
@@ -432,23 +432,23 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  {
-    displayName: 'Register',
-    iconName: 'user-plus',
-    route: '/authentication',
-    children: [
-      // {
-      //   displayName: 'Side Login',
-      //   iconName: 'point',
-      //   route: '/authentication/side-register',
-      // },
-      {
-        displayName: 'Boxed Login',
-        iconName: 'point',
-        route: '/authentication/boxed-register',
-      },
-    ],
-  },
+  // {
+  //   displayName: 'Register',
+  //   iconName: 'user-plus',
+  //   route: '/authentication',
+  //   children: [
+  //     // {
+  //     //   displayName: 'Side Login',
+  //     //   iconName: 'point',
+  //     //   route: '/authentication/side-register',
+  //     // },
+  //     {
+  //       displayName: 'Boxed Login',
+  //       iconName: 'point',
+  //       route: '/authentication/boxed-register',
+  //     },
+  //   ],
+  // },
   {
     displayName: 'Forgot Password',
     iconName: 'rotate',

@@ -249,11 +249,11 @@ export class AppHorizontalHeaderComponent {
       title: '404 Error Page',
       link: '/authentication/error',
     },
-    {
-      id: 5,
-      title: 'Notes App',
-      link: '/apps/notes',
-    },
+    // {
+    //   id: 5,
+    //   title: 'Notes App',
+    //   link: '/apps/notes',
+    // },
     {
       id: 6,
       title: 'Employee App',

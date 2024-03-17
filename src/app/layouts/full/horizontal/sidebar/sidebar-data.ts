@@ -57,11 +57,11 @@ export const navItems: NavItem[] = [
         iconName: 'point',
         route: 'apps/employee',
       },
-      {
-        displayName: 'Notes',
-        iconName: 'point',
-        route: 'apps/notes',
-      },
+      // {
+      //   displayName: 'Notes',
+      //   iconName: 'point',
+      //   route: 'apps/notes',
+      // },
       {
         displayName: 'Tickets',
         iconName: 'point',

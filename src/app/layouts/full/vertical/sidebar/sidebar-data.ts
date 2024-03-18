@@ -40,7 +40,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'User',
     iconName: 'user',
-    route: 'apps/contacts',
+    route: 'apps/users',
   },
   // {
   //   displayName: 'Courses',
@@ -51,6 +51,11 @@ export const navItems: NavItem[] = [
     displayName: 'Cars',
     iconName: 'car',
     route: 'apps/employee',
+  },
+  {
+    displayName: 'Subscribe',
+    iconName: 'bell',
+    route: 'apps/subscribe',
   },
   // {
   //   displayName: 'Notes',

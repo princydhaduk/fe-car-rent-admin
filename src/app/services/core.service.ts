@@ -84,4 +84,8 @@ export class CoreService {
     return this.http.get(url);
   }
 
+  getuser(): Observable<any>{
+    let url = "http://localhost:5000/api/admindisplayuser";
+    return this.http.get(url);
+  }
 }

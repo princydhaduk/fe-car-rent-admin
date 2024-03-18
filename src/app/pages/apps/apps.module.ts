@@ -74,6 +74,7 @@ import { AddedDialogComponent } from './invoice/add-invoice/added-dialog/added-d
 // blog
 import { AppBlogsComponent } from './blogs/blogs.component';
 import { AppBlogDetailsComponent } from './blogs/details/details.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -133,6 +134,7 @@ import { AppBlogDetailsComponent } from './blogs/details/details.component';
     OkDialogComponent,
     AppBlogsComponent,
     AppBlogDetailsComponent,
+    UserComponent,
   ],
   providers: [DatePipe],
 })

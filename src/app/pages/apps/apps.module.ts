@@ -75,6 +75,7 @@ import { AddedDialogComponent } from './invoice/add-invoice/added-dialog/added-d
 import { AppBlogsComponent } from './blogs/blogs.component';
 import { AppBlogDetailsComponent } from './blogs/details/details.component';
 import { UserComponent } from './user/user.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 
 @NgModule({
@@ -135,6 +136,7 @@ import { UserComponent } from './user/user.component';
     AppBlogsComponent,
     AppBlogDetailsComponent,
     UserComponent,
+    SubscribeComponent,
   ],
   providers: [DatePipe],
 })

@@ -55,7 +55,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Subscribe',
     iconName: 'bell',
-    route: 'apps/subscribe',
+    route: 'apps/subscribes',
   },
   // {
   //   displayName: 'Notes',

@@ -20,6 +20,7 @@ import { AppEditInvoiceComponent } from './invoice/edit-invoice/edit-invoice.com
 import { AppBlogsComponent } from './blogs/blogs.component';
 import { AppBlogDetailsComponent } from './blogs/details/details.component';
 import { UserComponent } from './user/user.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 export const AppsRoutes: Routes = [
   {
@@ -201,6 +202,17 @@ export const AppsRoutes: Routes = [
           urls: [
             { title: 'Dashboard', url: '/dashboards/dashboard2' },
             { title: 'Cars' },
+          ],
+        },
+      },
+      {
+        path: 'subscribes',
+        component: SubscribeComponent,
+        data: {
+          title: 'Subscribes',
+          urls: [
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
+            { title: 'Subscribes' },
           ],
         },
       },

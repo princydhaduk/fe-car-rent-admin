@@ -170,7 +170,7 @@ export class AppEmployeeDialogContentComponent implements OnInit {
       );
     }
     if (this.local_data.img === undefined) {
-      this.local_data.img = '../../../../assets/car-images/toy-car.jpg';
+      // this.local_data.img = '../../../../assets/car-images/toy-car.jpg';
     }
   }
 

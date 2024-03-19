@@ -40,7 +40,6 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
   ];
   dataSource: any = [];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator = Object.create(null);
 
   constructor(public dialog: MatDialog, public datePipe: DatePipe, private formBuilder: FormBuilder, private setting: CoreService, private http: HttpClient, private toastr:ToastrService,) {
@@ -92,7 +91,15 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
     const payload = {
         "plate_number": element.plate_number,
         "Image":  element?.fileToUpload?.name || element.img,
-        "price": element.price
+        "price": element.price,
+        "model": element.model,
+        "brand": element.brand,
+        "description" : element.description,
+        "mileage": element.mileage,
+        "Air_Conditioning_Availability": element.ac,
+        "seats": element.seats,
+        "leggage": element.leggage,
+        "fuel": element.fuel,
     }
     this.setting.setCarUpdate(payload).subscribe((res:any) => {
       if(res.message){
@@ -170,7 +177,7 @@ export class AppEmployeeDialogContentComponent implements OnInit {
       );
     }
     if (this.local_data.img === undefined) {
-      // this.local_data.img = '../../../../assets/car-images/toy-car.jpg';
+      this.local_data.img = '../../../../assets/car-images/toy-car.jpg';
     }
   }
 

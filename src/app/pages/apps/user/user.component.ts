@@ -18,8 +18,8 @@ export class UserComponent implements AfterViewInit, OnInit{
   filterData: any;
   filteredItems: any;
   displayedColumns = ['id', 'fname', 'lname', 'email', 'mobile', 'gender','date']
-  // currentDate: string | null; 
-  currentDate : Date; 
+  currentDate: string | null; 
+  // currentDate : Date = new Date(); 
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator = Object.create(null);
@@ -29,8 +29,6 @@ export class UserComponent implements AfterViewInit, OnInit{
     public dialog: MatDialog,
     private datePipe:DatePipe
   ) {
-    // this.contacts = this.contactService.getContacts();
-    // console.log(this.users);
     this.filteredItems = this.dataSource?.data?.slice();
   }
 
@@ -61,11 +59,9 @@ export class UserComponent implements AfterViewInit, OnInit{
           ele['id'] = index + 1;
         });
         console.log("res---->>",res);
-        // this.currentDate = new Date(res.currentDate);
-        // this.dataSource.data = res.message.data.createdAt;
+        this.currentDate = res.message.data[0].createdAt;
         this.dataSource.data = res.message.data;
         this.filterData = res.message.data;
-        console.log("datasource----",this.dataSource);
       }
     });
   }

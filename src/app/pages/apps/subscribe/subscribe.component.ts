@@ -16,7 +16,8 @@ export class SubscribeComponent {
   searchText: any;
   filterData: any;
   filteredItems: any;
-  displayedColumns = ['id','email','date']
+  displayedColumns = ['id','email','date'];
+  currentDate: Date;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator = Object.create(null);
@@ -54,6 +55,7 @@ export class SubscribeComponent {
           ele['id'] = index + 1;
         });
         console.log("res---->>",res);
+        this.currentDate = res.message.data[0].createdAt;
         this.dataSource.data = res.message.data;
         this.filterData = res.message.data;
       }

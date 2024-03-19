@@ -26,9 +26,6 @@ export class AppPermissionComponent implements OnInit {
   ngOnInit(): void {
     this.currentRole = "ADMIN";
     this.currentPermissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-
-
-
   }
 
 

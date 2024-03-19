@@ -459,22 +459,22 @@ export const navItems: NavItem[] = [
   //     },
   //   ],
   // },
-  {
-    displayName: 'Forgot Password',
-    iconName: 'rotate',
-    route: '/authentication',
-    children: [
-      // {
-      //   displayName: 'Side Forgot Password',
-      //   iconName: 'point',
-      //   route: '/authentication/side-forgot-pwd',
-      // },
-      {
-        displayName: 'Boxed Forgot Password',
-        iconName: 'point',
-        route: '/authentication/boxed-forgot-pwd',
-      },
-    ],
+  // {
+  //   displayName: 'Forgot Password',
+  //   iconName: 'rotate',
+  //   route: '/authentication',
+  //   children: [
+  //     // {
+  //     //   displayName: 'Side Forgot Password',
+  //     //   iconName: 'point',
+  //     //   route: '/authentication/side-forgot-pwd',
+  //     // },
+  //     {
+  //       displayName: 'Boxed Forgot Password',
+  //       iconName: 'point',
+  //       route: '/authentication/boxed-forgot-pwd',
+  //     },
+  //   ],
   // },
   // {
   //   displayName: 'Two Steps',
@@ -564,5 +564,5 @@ export const navItems: NavItem[] = [
   //   iconName: 'star',
   //   route: 'https://www.google.com/',
   //   external: true,
-  },
+  // },
 ];

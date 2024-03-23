@@ -21,6 +21,7 @@ import { AppBlogsComponent } from './blogs/blogs.component';
 import { AppBlogDetailsComponent } from './blogs/details/details.component';
 import { UserComponent } from './user/user.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { BlogComponent } from './blog/blog.component';
 
 export const AppsRoutes: Routes = [
   {
@@ -202,6 +203,17 @@ export const AppsRoutes: Routes = [
           urls: [
             { title: 'Dashboard', url: '/dashboards/dashboard2' },
             { title: 'Cars' },
+          ],
+        },
+      },
+      {
+        path: 'blog',
+        component: BlogComponent,
+        data: {
+          title: 'Blogs Detils',
+          urls: [
+            { title: 'Dashboard', url: '/dashboards/dashboard2' },
+            { title: 'Blogs' },
           ],
         },
       },

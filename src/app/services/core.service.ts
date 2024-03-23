@@ -93,4 +93,19 @@ export class CoreService {
     let url = "http://localhost:5000/api/admindisplaysubscribation";
     return this.http.get(url);
   }
+
+  setBlog(payload: any): Observable<any>{
+    let url = "http://localhost:5000/api/createBlog";
+    return this.http.post(url,payload);
+  }
+
+  setBlogUpdate(payload: any){
+    let url = "http://localhost:5000/api/UpdateBlog";
+    return this.http.post(url, payload);
+  }
+
+  getBlogs(): Observable<any>{
+    let url = "http://localhost:5000/api/displayBlog";
+    return this.http.get(url);
+  }
 }

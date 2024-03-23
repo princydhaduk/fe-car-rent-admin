@@ -53,6 +53,11 @@ export const navItems: NavItem[] = [
     route: 'apps/employee',
   },
   {
+    displayName: 'Blogs',
+    iconName: 'chart-donut-3',
+    route: 'apps/blog',
+  },
+  {
     displayName: 'Subscribe',
     iconName: 'bell',
     route: 'apps/subscribes',

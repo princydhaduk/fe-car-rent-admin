@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboards/dashboard2',
+        redirectTo: '/authentication/boxed-login',
         pathMatch: 'full',
       },
       {

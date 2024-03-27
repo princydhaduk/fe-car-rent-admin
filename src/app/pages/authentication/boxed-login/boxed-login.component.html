@@ -65,26 +65,26 @@
           <h1 style="text-align: center;">Login Now !</h1>
           <form class="m-t-30" [formGroup]="form" (ngSubmit)="submit()">
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Username</mat-label
+              >Email</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput formControlName="uname" />
+              <input matInput formControlName="email" />
               <mat-hint
-                  *ngIf="f['uname'].touched && f['uname'].invalid"
+                  *ngIf="f['email'].touched && f['email'].invalid"
                   class="m-b-16 error-msg"
                 >
                   <div
                     class="text-error"
-                    *ngIf="f['uname'].errors && f['uname'].errors['required']"
+                    *ngIf="f['email'].errors && f['email'].errors['required']"
                   >
-                    Name is required.
+                  Email is required.
                   </div>
-                  <div
+                  <!-- <div
                     class="text-error"
                     *ngIf="f['uname'].errors && f['uname'].errors['minlength']"
                   >
                     Name should be 6 character.
-                  </div>
+                  </div> -->
                 </mat-hint>
             </mat-form-field>
             <!-- password -->
@@ -105,6 +105,12 @@
                   >
                     Password is required.
                   </div>
+                  <div
+                    class="text-error"
+                    *ngIf="f['password'].errors && f['password'].errors['minlength']"
+                  >
+                    Password should be 6 character.
+                  </div>
                 </mat-hint>
             </mat-form-field>
 
@@ -121,7 +127,7 @@
             </button>
             <!-- input -->
           </form>
-          <!--<span class="d-block f-w-500 text-center m-t-24"
+          <span class="d-block f-w-500 text-center m-t-24"
             >New to GadiCure?
              <a
               [routerLink]="['/authentication/boxed-register']"
@@ -129,7 +135,7 @@
             >
               Create an account</a
             >
-          </span>-->
+          </span>
         </mat-card-content>
       </mat-card>
     </div>

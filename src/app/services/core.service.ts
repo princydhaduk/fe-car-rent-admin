@@ -34,9 +34,14 @@ export class CoreService {
     this.notify$.next({ lang });
   }
 
-  postAdmin(payload:any){
-    let url = 'http://localhost:5000/api/adminLogin/';
+  postAdminLogin(payload:any): Observable<any>{
+    let url = 'http://localhost:5000/api/adminLogin';
     return this.http.post(url,payload);
+  }
+
+  postAdminRegister(payload: any): Observable<any>{
+    let url = 'http://localhost:5000/api/adminreg';
+    return this.http.post(url, payload);
   }
 
   getContact(): Observable<any>{

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } 
 import { Router, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../../material.module';
 import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-boxed-register',
@@ -14,12 +15,12 @@ import { NgIf } from '@angular/common';
 export class AppBoxedRegisterComponent {
   options = this.settings.getOptions();
 
-  constructor(private settings: CoreService, private router: Router) {}
+  constructor(private settings: CoreService, private router: Router, private toastr:ToastrService) {}
 
   form = new FormGroup({
     uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   get f() {
@@ -28,7 +29,17 @@ export class AppBoxedRegisterComponent {
 
   submit() {
     // console.log(this.form.value);
-    this.router.navigate(['/dashboards/dashboard1']);
-
+    const payload = {
+      "adminname": this.form.value.uname,
+      "email": this.form.value.email,
+      "password": this.form.value.password,
+    }
+    this.settings.postAdminRegister(payload).subscribe((res: any) => {
+      if(res){
+        this.toastr.success(res.message);
+        this.router.navigate(['/authentication/boxed-login']);
+      }
+    })
+   
   }
 }

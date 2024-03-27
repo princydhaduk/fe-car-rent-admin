@@ -447,23 +447,23 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  // {
-  //   displayName: 'Register',
-  //   iconName: 'user-plus',
-  //   route: '/authentication',
-  //   children: [
-  //     // {
-  //     //   displayName: 'Side Login',
-  //     //   iconName: 'point',
-  //     //   route: '/authentication/side-register',
-  //     // },
-  //     {
-  //       displayName: 'Boxed Login',
-  //       iconName: 'point',
-  //       route: '/authentication/boxed-register',
-  //     },
-  //   ],
-  // },
+  {
+    displayName: 'Register',
+    iconName: 'user-plus',
+    route: '/authentication',
+    children: [
+      // {
+      //   displayName: 'Side Login',
+      //   iconName: 'point',
+      //   route: '/authentication/side-register',
+      // },
+      {
+        displayName: 'Boxed Login',
+        iconName: 'point',
+        route: '/authentication/boxed-register',
+      },
+    ],
+  },
   // {
   //   displayName: 'Forgot Password',
   //   iconName: 'rotate',

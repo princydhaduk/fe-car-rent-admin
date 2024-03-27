@@ -18,8 +18,8 @@ export class AppBoxedLoginComponent {
   constructor(private settings: CoreService, private router: Router, private toastr:ToastrService) {}
 
   form = new FormGroup({
-    uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   get f() {
@@ -29,10 +29,10 @@ export class AppBoxedLoginComponent {
   submit() {
     // console.log(this.form.value);
     const payload ={
-      "username": this.form.value.uname,
+      "email": this.form.value.email,
       "password": this.form.value.password,
     }
-    this.settings.postAdmin(payload).subscribe((res:any) => {
+    this.settings.postAdminLogin(payload).subscribe((res:any) => {
       if(res && res.status === 200){
         localStorage.setItem('token', res?.token)
         this.router.navigate(['/dashboards/dashboard2']);

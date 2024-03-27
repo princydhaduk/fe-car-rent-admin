@@ -122,6 +122,12 @@
                 >
                   Password is required.
                 </div>
+                <div
+                  class="text-error"
+                  *ngIf="f['password'].errors && f['password'].errors['minlength']"
+                >
+                  Password should be 6 character.
+                </div>
               </mat-hint>
             </mat-form-field>
 

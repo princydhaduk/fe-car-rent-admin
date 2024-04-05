@@ -42,7 +42,6 @@ export class BlogComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // debugger
     this.dataSource = new MatTableDataSource(this.dataSource);
     this.dataSource.paginator = this.paginator;
   }
@@ -102,8 +101,8 @@ export class BlogComponent implements OnInit, AfterViewInit {
     this.http.post('http://localhost:5000/api/deleteBlog',{bloag_id: element._id}).subscribe((res:any) => {
       if(res.message){
         this.toastr.success(res.message);
+        this.getBlogDisplay();
       }
-      this.getBlogDisplay();
     });
   }
 

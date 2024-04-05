@@ -458,7 +458,7 @@ export const navItems: NavItem[] = [
       //   route: '/authentication/side-register',
       // },
       {
-        displayName: 'Boxed Login',
+        displayName: 'Boxed Register',
         iconName: 'point',
         route: '/authentication/boxed-register',
       },

@@ -1,4 +1,3 @@
-import { messages } from './../chat/chat-data';
 import { ToastrService } from 'ngx-toastr';
 import { Component, Inject, Optional, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
@@ -121,8 +120,8 @@ export class AppEmployeeComponent implements OnInit, AfterViewInit {
     this.http.post('http://localhost:5000/api/cardelete',{plate_number: element.plate_number},options).subscribe((res:any) => {
       if(res.message){
         this.toastr.success(res.message);
+        this.getCarDisplay();
       }
-      this.getCarDisplay();
     });
   }
 

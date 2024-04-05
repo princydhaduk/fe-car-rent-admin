@@ -67,7 +67,7 @@ export class AppSalesOverviewComponent {
                 color: '#2A3547',
                 fontSize: '20px',
                 fontWeight: '600',
-                label: '$500,458',
+                label: '$500',
               },
             },
           },
